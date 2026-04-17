@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>3D Scroll Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <img src="assets/Final Logo.svg" alt="logo">
+    </div>
+    <div class="nav-right">
+      <div class="nav-links">
+        <ul class="navbar-links">
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#workflow-section">Workflow</a></li>
+          <li><a href="#">Advantages</a></li>
+          <li><a href="#">Users</a></li>
+        </ul>
+      </div>
+      <a href="" class="navbar-cta">Get Started</a>
+    </div>
+  </nav>
+
+
+
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <video class="hero-bg" id="hero-bg" autoplay muted loop playsinline>
+      <source src="assets/WhatsApp Video 2026-04-17 at 1.36.03 PM.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge">BRIDGE INTELLIGENCE PLATFORM</div>
+      <h1 class="hero-heading">
+        From Survey to<br>
+        <span class="hero-heading-cyan">Structural Design</span>
+      </h1>
+      <p class="hero-sub">
+        One AI-powered platform for bridge concept development, 2D/3D<br>
+        generation, BIM modeling up to LOD 350, and approval-ready<br>
+        engineering outputs.
+      </p>
+      <div class="hero-buttons">
+        <a href="#capabilities" class="hero-btn-primary">Explore Capabilities</a>
+        <a href="#workflow-section" class="hero-btn-secondary">See the Workflow</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="node-scene">
+    <svg id="node-svg"></svg>
+    <section class="bridge-services" id="workflow-section">
+
+
+      <!-- LEFT -->
+      <div class="left">
+
+        <div class="card-wrapper">
+          <div class="card-label">3D <span>RODIN 2.0</span></div>
+          <div class="card small card-image-main" id="card-rodin">
+            <video autoplay muted loop playsinline>
+              <source src="assets/Smoothly_transition_from_202604161228.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+
+        <div class="card-wrapper">
+          <div class="card-label">COLOR REFERENCE</div>
+          <div class="card small image-2" id="card-color" style="height: 100px; width: 250px;"></div>
+        </div>
+
+      </div>
+
+      <!-- CENTER -->
+      <div class="card-wrapper">
+        <div class="card-label">IMAGE <span>STABLE DIFFUSION</span></div>
+        <div class="card large image-3" id="card-stable"></div>
+      </div>
+
+      <!-- MIDDLE -->
+      <div class="middle">
+
+        <div class="card-wrapper">
+          <div class="card-label">TEXT</div>
+          <div class="card text" id="card-text">
+            <p>
+              A Great-Tailed Grackle bird is flying from the background...
+            </p>
+          </div>
+        </div>
+
+        <div class="card-wrapper">
+          <div class="card-label">IMAGE <span>FLUX PRO 1.1</span></div>
+          <div class="card small image-4" id="card-flux"></div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div class="card-wrapper">
+        <div class="card-label">VIDEO <span>MINIMAX VIDEO</span></div>
+        <div class="card large image-5" id="card-video">
+          <video autoplay muted loop playsinline>
+            <source src="assets/WhatsApp Video 2026-04-16 at 4.15.12 PM.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+
+    </section>
+  </div><!-- /.node-scene -->
+
+  <section class="bridge-components" id="capabilities">
+    <div class="bridge-overlay">
+      <div class="viewer">
+        <img id="mainImage" src="assets/Whisk_047198cf63d6d0daed44d2ef48efbcc4dr.jpeg" alt="bridge" />
+      </div>
+
+      <!-- Tools -->
+      <div class="tool" style="top:20%; left:5%" data-img="assets/WhatsApp Image 2026-04-16 at 5.52.51 PM (1).jpeg"
+        data-width="90%" data-height="80%">Invert</div>
+      <div class="tool" style="top:40%; left:5%" data-img="assets/WhatsApp Image 2026-04-16 at 5.52.50 PM.jpeg">
+        Grayscale</div>
+      <div class="tool" style="top:70%; left:10%" data-img="assets/WhatsApp Image 2026-04-16 at 5.52.51 PM.jpeg">
+        Outpaint</div>
+      <div class="tool" style="top:30%; left:15%" data-img="assets/WhatsApp Image 2026-04-16 at 5.52.50 PM.jpeg">
+        Grayscale</div>
+      <div class="tool" style="top:55%; left:20%" data-img="assets/WhatsApp Image 2026-04-16 at 5.52.51 PM (1).jpeg">
+        Outpaint</div>
+
+      <div class="tool" style="top:20%; right:10%" data-effect="bright">Relight</div>
+      <div class="tool" style="top:50%; right:5%" data-effect="contrast">Channels</div>
+      <div class="tool" style="top:75%; right:15%" data-effect="blur">Depth</div>
+      <div class="tool" style="top:35%; right:17%" data-effect="contrast">Channels</div>
+      <div class="tool" style="top:60%; right:23%" data-effect="blur">Depth</div>
+    </div>
+  </section>
+
+  <!-- <section class="scroll-section">
+    <div class="canvas-sticky">
+      <canvas id="canvas"></canvas>
+    </div>
+  </section> -->
+
+  <section class="pre-footer-cta">
+    <div class="cta-container">
+      <h2>Design Bridges Faster, Smarter</h2>
+      <p>
+        Aagento brings survey ingestion, route planning, generative drafting, BIM<br>
+        creation, simulation, and detailed design into one web-based<br>
+        environment.
+      </p>
+      <a href="#" class="btn-early-access">Request Early Access</a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/Final Logo.svg" alt="Aagento Logo" class="footer-logo">
+        <p class="footer-subtext">Agentic AI for Linear Infrastructure</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Planning</a>
+        <a href="#">Monitoring</a>
+        <a href="#">Maintenance</a>
+        <a href="#">About</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-giant-text">
+        <img src="assets/Final Logo.svg" alt="Aagento Logo">      <div class="footer-copyright">© 2026 Aagento. All rights reserved.</div>
+
+      </div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+
+</html>
