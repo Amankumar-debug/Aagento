@@ -83,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Move background slightly in the opposite direction
       // Max displacement is 1.5% of viewport width/height
-      const moveX = (x - 0.5) * 3; 
-      const moveY = (y - 0.5) * 3;
+      const moveX = (x - 0.5) * 2; 
+      const moveY = (y - 0.5) * 2;
 
       heroBg.style.transform = `translate(${-moveX}%, ${-moveY}%)`;
     });
@@ -144,62 +144,65 @@ document.addEventListener('DOMContentLoaded', () => {
 // });
 
 const canvas = document.getElementById("canvas");
-const context = canvas.getContext("2d");
+if (canvas) {
+  const context = canvas.getContext("2d");
 
-function resizeCanvas() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  drawFrame(currentImage);
-}
-
-window.addEventListener("resize", resizeCanvas);
-
-const frameCount = 200;
-
-const currentFrame = index =>
-  `assets/ezgif-89ca856d59fc8554-png-split/ezgif-frame-${index.toString().padStart(3, '0')}.png`;
-
-const images = [];
-let currentImage = 0;
-
-for (let i = 1; i <= frameCount; i++) {
-  const img = new Image();
-  img.src = currentFrame(i);
-  images.push(img);
-}
-
-function drawFrame(index) {
-  const img = images[index];
-  if (!img || !img.complete) return;
-  context.clearRect(0, 0, canvas.width, canvas.height);
-  context.drawImage(img, 0, 0, canvas.width, canvas.height);
-}
-
-images[0].onload = () => {
-  resizeCanvas();
-};
-
-function updateOnScroll() {
-  const section = document.querySelector(".scroll-section");
-  const sectionTop = section.offsetTop;
-  const sectionHeight = section.offsetHeight;
-  const scrollY = window.scrollY;
-
-  const start = sectionTop;
-  const end = sectionTop + sectionHeight - window.innerHeight;
-
-  let progress = (scrollY - start) / (end - start);
-  progress = Math.max(0, Math.min(1, progress));
-
-  const frameIndex = Math.floor(progress * (frameCount - 1));
-
-  if (frameIndex !== currentImage) {
-    currentImage = frameIndex;
-    requestAnimationFrame(() => drawFrame(frameIndex));
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    drawFrame(currentImage);
   }
-}
 
-window.addEventListener("scroll", updateOnScroll);
+  window.addEventListener("resize", resizeCanvas);
+
+  const frameCount = 200;
+
+  const currentFrame = index =>
+    `assets/ezgif-89ca856d59fc8554-png-split/ezgif-frame-${index.toString().padStart(3, '0')}.png`;
+
+  const images = [];
+  let currentImage = 0;
+
+  for (let i = 1; i <= frameCount; i++) {
+    const img = new Image();
+    img.src = currentFrame(i);
+    images.push(img);
+  }
+
+  function drawFrame(index) {
+    const img = images[index];
+    if (!img || !img.complete) return;
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.drawImage(img, 0, 0, canvas.width, canvas.height);
+  }
+
+  images[0].onload = () => {
+    resizeCanvas();
+  };
+
+  function updateOnScroll() {
+    const section = document.querySelector(".scroll-section");
+    if (!section) return; // Add check just in case
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
+    const scrollY = window.scrollY;
+
+    const start = sectionTop;
+    const end = sectionTop + sectionHeight - window.innerHeight;
+
+    let progress = (scrollY - start) / (end - start);
+    progress = Math.max(0, Math.min(1, progress));
+
+    const frameIndex = Math.floor(progress * (frameCount - 1));
+
+    if (frameIndex !== currentImage) {
+      currentImage = frameIndex;
+      requestAnimationFrame(() => drawFrame(frameIndex));
+    }
+  }
+
+  window.addEventListener("scroll", updateOnScroll);
+}
 
 
 
